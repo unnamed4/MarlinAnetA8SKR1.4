@@ -1459,7 +1459,7 @@
    * LED Control Menu
    * Add LED Control to the LCD menu
    */
-  //#define LED_CONTROL_MENU
+  #define LED_CONTROL_MENU //jman
   #if ENABLED(LED_CONTROL_MENU)
     #define LED_COLOR_PRESETS                 // Enable the Preset Color menu option
     //#define NEO2_COLOR_PRESETS              // Enable a second NeoPixel Preset Color menu option
@@ -2177,6 +2177,12 @@
   //#define PROBING_MARGIN_RIGHT PROBING_MARGIN
   //#define PROBING_MARGIN_FRONT PROBING_MARGIN
   //#define PROBING_MARGIN_BACK PROBING_MARGIN
+
+  //JMAN ADDED FROM https://3dprinting.stackexchange.com/questions/8153/how-to-set-z-probe-boundary-limits-in-firmware-when-using-automatic-bed-leveling
+  //  #define PROBING_MARGIN_LEFT (0 + 50)  
+ //   #define PROBING_MARGIN_RIGHT (X_BED_SIZE  + (-20) - (0+50))
+  //  #define PROBING_MARGIN_FRONT (0+50)
+  //  #define PROBING_MARGIN_BACK (Y_BED_SIZE + (-40.5) - (0+50))
 #endif
 
 #if EITHER(MESH_BED_LEVELING, AUTO_BED_LEVELING_UBL)
