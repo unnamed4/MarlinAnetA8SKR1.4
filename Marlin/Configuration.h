@@ -1169,7 +1169,7 @@
 // Mechanical endstop with COM to ground and NC to Signal uses "false" here (most common setup).
 #define X_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.  //JMAN
 #define Y_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.  //JMAN
-#define Z_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.  //JMAN
+#define Z_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.  //JMAN
 #define I_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define J_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define K_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
@@ -1185,7 +1185,7 @@
 #define U_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define V_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define W_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define Z_MIN_PROBE_ENDSTOP_INVERTING true // Set to true to invert the logic of the probe. //jman
+#define Z_MIN_PROBE_ENDSTOP_INVERTING false // Set to true to invert the logic of the probe. //jman changed back to false for bltouch
 
 // Enable this feature if all enabled endstop pins are interrupt-capable.
 // This will remove the need to poll the interrupt pins, saving many CPU cycles.
@@ -1233,7 +1233,7 @@
  * Override with M92
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 400, 404.20 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 98.52, 98.28, 399, 404.20 }
 
 /**
  * Default Max Feed Rate (linear=mm/s, rotational=°/s)
@@ -1339,7 +1339,7 @@
  * The probe replaces the Z-MIN endstop and is used for Z homing.
  * (Automatically enables USE_PROBE_FOR_Z_HOMING.)
  */
-#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN //jman
+//#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN //jman
 
 // Force the use of the probe for Z-axis homing
 #define USE_PROBE_FOR_Z_HOMING
@@ -1379,7 +1379,7 @@
  * A Fix-Mounted Probe either doesn't deploy or needs manual deployment.
  *   (e.g., an inductive probe or a nozzle-based probe-switch.)
  */
-#define FIX_MOUNTED_PROBE
+//#define FIX_MOUNTED_PROBE //uncommented due to inductive probe not working well after a couple months, added bltouch
 
 /**
  * Use the nozzle as the probe, as with a conductive
@@ -1398,7 +1398,14 @@
 /**
  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
  */
-//#define BLTOUCH
+/**
+ JMAN added BLtouch and removed tronxy xy-08n inductive sensor 
+(wasn't working well after a few months, replacement returned 
+to amazon as well for how close sensitivity was ~1.5mm of glass bed and caused issues )
+*/
+#define BLTOUCH  
+
+
 
 /**
  * MagLev V4 probe by MDD
@@ -1551,8 +1558,8 @@
  *     O-- FRONT --+
  */
 //#define NOZZLE_TO_PROBE_OFFSET { -20, -40.5, -1 } //jman OLD HOTEND
-#define NOZZLE_TO_PROBE_OFFSET { 31.5, -1.3, -1 } //jman E3D HOTEND added 2/24/23 //SWITCHED x & Y sign
-
+//#define NOZZLE_TO_PROBE_OFFSET { 31.5, -1.3, -1 } //jman E3D HOTEND added 2/24/23 //SWITCHED x & Y sign
+#define NOZZLE_TO_PROBE_OFFSET { 25, -20, -2.77 } // e3d v6 hotend added bltouch
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1952,7 +1959,7 @@
  * these options to restore the prior leveling state or to always enable
  * leveling immediately after G28.
  */
-//#define RESTORE_LEVELING_AFTER_G28
+#define RESTORE_LEVELING_AFTER_G28
 //#define ENABLE_LEVELING_AFTER_G28
 
 /**
