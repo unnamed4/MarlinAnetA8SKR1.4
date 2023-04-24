@@ -1559,7 +1559,7 @@ to amazon as well for how close sensitivity was ~1.5mm of glass bed and caused i
  */
 //#define NOZZLE_TO_PROBE_OFFSET { -20, -40.5, -1 } //jman OLD HOTEND
 //#define NOZZLE_TO_PROBE_OFFSET { 31.5, -1.3, -1 } //jman E3D HOTEND added 2/24/23 //SWITCHED x & Y sign
-#define NOZZLE_TO_PROBE_OFFSET { 25, -20, -2.77 } // e3d v6 hotend added bltouch
+#define NOZZLE_TO_PROBE_OFFSET { 23.5, -20.5, -2.69 } // e3d v6 hotend added bltouch
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
